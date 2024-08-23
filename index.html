@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Mật Khẩu Ngẫu Nhiên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="generate">Tạo Mật Khẩu</button>
+    <input type="text" id="password" readonly>
+    <button id="copy">Sao Chép</button>
+
+    <script>
+        const generateBtn = document.getElementById('generate');
+        const passwordInput = document.getElementById('password');
+        const copyBtn = document.getElementById('copy');
+
+        const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const specialChars = '!@#$%^&*()';
+
+        generateBtn.addEventListener('click', () => {
+            let password = '';
+            for (let i = 0; i < 6; i++) {
+                password += uppercaseLetters.charAt(Math.floor(Math.random() * uppercaseLetters.length));
+            }
+            password += specialChars.charAt(Math.floor(Math.random() * specialChars.length));
+            password += '@2024@@@@';
+            passwordInput.value = password;
+        });
+
+        copyBtn.addEventListener('click', () => {
+            passwordInput.select();
+            document.execCommand('copy');
+            alert('Mật khẩu đã được sao chép!');
+        });
+    </script>
+</body>
+</html>
